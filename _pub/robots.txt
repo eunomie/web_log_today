@@ -1,1 +1,1 @@
-Sitemap: http://local.host/sitemap.xml
+Sitemap: http://eunomie.info/sitemap.xml
