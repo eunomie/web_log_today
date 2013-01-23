@@ -1,0 +1,18 @@
+!!! XML
+%feed(xmlns="http://www.w3.org/2005/Atom")
+  %title= @contents.config["title"]
+  %link{:href => link_to("atom.xml"), :rel => "self"}
+  %link{:href => link_to}
+  %updated= Time.now.strftime '%FT%TZ'
+  %id= link_to
+  %author
+    %name= @contents.config["name"]
+  - @contents.list_lasts(5).each do |post|
+    %entry
+      %title= post.title
+      %link{:href => link_to(post.url)}
+      %updated= post.date.strftime '%FT%TZ'
+      %id= link_to(post.url)
+      %content(type="xhtml")
+        %div(xmlns="http://www.w3.org/1999/xhtml")
+          = post.content

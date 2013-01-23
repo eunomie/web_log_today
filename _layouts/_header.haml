@@ -1,0 +1,23 @@
+- title = if @scope.title? then "#{@scope.title} - #{@contents.config["title"]}" else @contents.config["title"] end
+- twitter_account = if @scope.twitter? then @scope.twitter else @contents.config["twitter_creator"] end
+- url = link_to @scope.url
+- description = if @scope.description? then @scope.description else @scope.excerpt(true) end
+- author = if @scope.author? then @scope.author else @contents.config["name"] end
+%meta(charset="utf-8")
+%title= title
+%meta(name="twitter:title" content=title)
+%meta(name="og:title" content=title)
+%meta(itemprop="name" content=title)
+%meta(name="twitter:card" content="summary")
+%meta(name="twitter:site" content="@#{@contents.config["twitter_site"]}")
+%meta(name="twitter:creator" content="@#{twitter_account}")
+%meta(name="author" content=author)
+%meta(name="twitter:url" content=url)
+%meta(name="og:url" content=url)
+%meta(name="twitter:description" content=description)
+%meta(name="og:description" content=description)
+%meta(itemprop="description" content=description)
+%link{:rel => "icon", :href => link_to("favicon.ico")}
+%link{:rel => "stylesheet", :type => "text/css", :href => link_to("application.css")}
+/[if lt IE 9]
+  %script(src="//html5shim.googlecode.com/svn/trunk/html5.js")

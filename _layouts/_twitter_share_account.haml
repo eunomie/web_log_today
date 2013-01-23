@@ -1,0 +1,4 @@
+- twitter_account = if @scope.twitter? then @scope.twitter else @contents.config["twitter_creator"] end
+%a.twitter-share-button(href="https://twitter.com/share" data-via=twitter_account data-count="none")= "Tweet"
+:javascript
+  !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");

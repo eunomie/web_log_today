@@ -1,0 +1,5 @@
+!!! XML
+%urlset(xmlns="http://www.sitemaps.org/schemas/sitemap/0.9")
+  - @contents.urls.each do |url|
+    %url
+      %loc= link_to(url)

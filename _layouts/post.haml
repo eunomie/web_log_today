@@ -1,0 +1,33 @@
+---
+layout: master
+---
+
+%article
+  %header
+    %h1= title
+
+    %h4
+      Par
+      = author
+      - if @contents.account? "twitter"
+        %a.icon-twitter-sign.color.alone(href="#{@contents.account "twitter"}")
+      - if @contents.account? "gplus"
+        %a.icon-google-plus-sign.color.alone(href="#{@contents.account "gplus"}?rel=author")
+      , le
+      = formated_date
+      dans
+
+      %ul.tags
+        - tags.each do |tag|
+          %li
+            %a.icon-tag{:href => link_to("tags/#{tag}")}
+              = tag
+
+    - if gravatar?
+      %img.pola(src=gravatar alt=author)
+
+  = content
+
+  %footer
+    = render :partial => "twitter_share_account"
+    = render :partial => "gplus_share"

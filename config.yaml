@@ -1,0 +1,14 @@
+site_url: http://local.host
+title: Web Log Today
+name: Plop
+twitter_site: plopplop
+twitter_creator: plopplop
+default_description: My personal weblog
+accounts:
+    twitter: https://twitter.com/
+    gplus: https://plus.google.com/
+    github: http://github.com/
+    linkedin: http://fr.linkedin.com/in/
+assets:
+    css: [application]
+    js: [application]

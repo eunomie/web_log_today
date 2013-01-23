@@ -1,0 +1,12 @@
+!!! 5
+%html(lang="en" itemscope itemtype="http://schema.org/Article")
+  %head
+    = render :partial => "header"
+
+  %body(class="blue")
+    = render :partial => "body_header"
+
+    %section.main
+      = content
+
+    = render :partial => "body_footer"

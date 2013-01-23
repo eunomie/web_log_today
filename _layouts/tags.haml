@@ -1,0 +1,38 @@
+!!! 5
+%html(lang="en")
+  %head
+    = render :partial => "header"
+
+  %body(class="blue")
+    = render :partial => "body_header"
+
+    %section
+      %article
+        %header
+          %h1.icon-tags
+            All articles tagged
+            %em= @contents.tag
+
+        %ul.post-list
+          - posts = @contents.list_by_date
+          - posts.keys.sort.reverse.each do |year|
+            - year_posts = posts[year]
+            %li
+              %span.date= year
+              %ul
+                - year_posts.keys.sort.reverse.each do |month|
+                  - month_posts = year_posts[month]
+                  %li
+                    %span.date= month
+                    %ul
+                      - month_posts.keys.sort.reverse.each do |day|
+                        - day_posts = month_posts[day]
+                        %li
+                          %span.date= day
+                          %ul
+                            - day_posts.each do |post|
+                              %li.icon-comments-alt
+                                %a{:href => link_to(post.url)}
+                                  = post.title
+
+    = render :partial => "body_footer"
