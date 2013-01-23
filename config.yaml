@@ -1,14 +1,13 @@
-site_url: http://local.host
+site_url: http://eunomie.info
 title: Web Log Today
-name: Plop
-twitter_site: plopplop
-twitter_creator: plopplop
-default_description: My personal weblog
+name: Yves Brissaud
+twitter_site: _crev_
+twitter_creator: _crev_
+default_description: « Web Log Today » demonstration and documentation website
 accounts:
-    twitter: https://twitter.com/
-    gplus: https://plus.google.com/
-    github: http://github.com/
-    linkedin: http://fr.linkedin.com/in/
+    twitter: https://twitter.com/_crev_
+    gplus: https://plus.google.com/112813954986166280487
+    github: http://github.com/CrEv
 assets:
     css: [application]
     js: [application]
