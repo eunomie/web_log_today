@@ -7,15 +7,15 @@ layout: master
     %h1= title
 
     %h4
-      Par
+      By
       = author
       - if @contents.account? "twitter"
         %a.icon-twitter-sign.color.alone(href="#{@contents.account "twitter"}")
       - if @contents.account? "gplus"
         %a.icon-google-plus-sign.color.alone(href="#{@contents.account "gplus"}?rel=author")
-      , le
+      , 
       = formated_date
-      dans
+      inside
 
       %ul.tags
         - tags.each do |tag|

@@ -1,6 +1,6 @@
 ---
-layout: index
+layout: blog
 limit: -1
 ---
 
-Voici l'intégralité des articles publiés :
+All blog posts:

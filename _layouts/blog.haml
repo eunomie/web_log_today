@@ -1,0 +1,50 @@
+!!! 5
+%html(lang="en")
+  %head
+    = render :partial => "header"
+
+  %body(class="blue")
+    = render :partial => "body_header"
+
+    %section.main
+      %article
+        = content
+
+        %ul.post-list
+          - if @scope.limit > 0
+            - posts = @contents.list_lasts(@scope.limit)
+            - posts.each do |post|
+              %li.icon-comments-alt
+                %span.date
+                  = post.date.strftime "%F"
+                = ":"
+                %a{:href => link_to(post.url)}
+                  = post.title
+                - if post.description?
+                  %blockquote= post.description
+                - else
+                  %blockquote= post.excerpt(true)
+          - else
+            - posts = @contents.list_by_date
+            - posts.keys.sort.reverse.each do |year|
+              - year_posts = posts[year]
+              %li
+                %span.date= year
+                %ul
+                  - year_posts.keys.sort.reverse.each do |month|
+                    - month_posts = year_posts[month]
+                    %li
+                      %span.date= month
+                      %ul
+                        - month_posts.keys.sort.reverse.each do |day|
+                          - day_posts = month_posts[day]
+                          %li
+                            %span.date= day
+                            %ul
+                              - day_posts.each do |post|
+                                %li.icon-comments-alt
+                                  %a{:href => link_to(post.url)}
+                                    = post.title
+        
+
+    = render :partial => "body_footer"

@@ -10,21 +10,16 @@ layout: master
       - if @contents.account? "twitter"
         %li
           %a.icon-twitter-sign.color{:href => "#{@contents.account "twitter"}"}
-            Mon compte twitter
+            My twitter account
       - if @contents.account? "gplus"
         %li
           %a.icon-google-plus-sign.color{:href => "#{@contents.account "gplus"}?rel=author"}
-            Mon compte Google +
+            My Google + account
       - if @contents.account? "github"
         %li
           %a.icon-github-sign.color{:href => "#{@contents.account "github"}"}
-            Mon compte Github
+            My Github account
       - if @contents.account? "linkedin"
         %li
           %a.icon-linkedin-sign.color{:href => "#{@contents.account "linkedin"}"}
-            Mon compte linkedin
-
-%footer
-  = render :partial => "twitter_account"
-  = render :partial => "twitter_share_account"
-  = render :partial => "gplus_share"
+            My linkedin account
