@@ -37,60 +37,56 @@ Some a little more special files may be present, see the specific part.
 
 ### `_css`
 
-Contient l'ensemble des fichiers [sass][] destinés à être compilés en css. Les fichiers "racines" sont spécifiés dans la configuration (voir plus loin). Le fichier généré est le nom du fichier [sass][] avec l'extension css. Par exemple `application.sass` donnera `application.css`
+All [sass][] files to be compiled in css. Root files are specified in the configuration file. The name of the css file will be the name of the root [sass][] file. By example `application.sass` will become `application.css`.
 
-Vous pouvez utiliser toutes les fonctionnalités de [sass][], entre autre les `@import` vous permettant de factoriser vos css.
+You can use all functionalities of [sass][], by example `@import` to split your css in multiple files.
 
-Si vous avez des fichiers `css` à inclure, et donc ne nécessitant pas une compilation, se référer à la partie publique.
-
-_Note :_ il est bien sur possible d'avoir plusieurs fichiers css de sortie.
+If you want to use css-only files, please refer to the public part.
 
 ### `_js`
 
-Contient l'ensemble des fichiers [coffeescript][] destinés à être compilés en javascript. Les fichiers à compilés sont à spécifier dans la configuration.
+All [coffeescript][] files to be compiled in javascript. Files to compile must be specified in the configuration.
 
-Le fichier généré est le nom du fichier [coffeescript][] avec l'extension js. Par exemple `application.coffee` donnera `application.js`.
+The name of the javascript file will be the name of the [coffeescript][]. By example `application.coffee` will become `application.js`.
 
-Pour le moment il n'y a pas de mécanismes permettant de concaténer plusieurs fichiers [coffeescript][] en un. Dans un premier temps ce n'est pas réellement nécessaire car le but était de faire un site/blog simple et non une application web. Néanmoins un système type [sprockets][] pourra être envisagé par la suite.
+For now there's no way to concat many [coffeescript][] files in one. That's simply not the principal goal. A system like [sprockets][] can be adding in the future.
 
-Si vous avez des fichiers `js` à inclure, et donc ne nécessitant pas une compilation, se référer à la partie publique.
-
-_Note :_ il est bien sur possible d'avoir plusieurs fichiers javascript de sortie.
+If you want include plain javascript files, please refer to the public part.
 
 ### `_layouts`
 
-Contient l'ensemble des fichiers [haml][] de templates. Il peut s'agir aussi bien de fichiers "racines" fournissant l'html de base que de fichiers partiels (à charger avec `render :partial => "..."`) ou des fichiers "intermédiaires".
+All [haml][] template files, either root, partials or intermediary.
 
-Les contenus (pages, posts) déclarent dans leur entête le template à utiliser. Un template peut également faire appel à un template parent. Ceci permet par exemple d'avoir un premier template correspondant à tout ce qui tourne autour du contenu généré par le markdown, et un autre dédié à la page en elle-même. Pour plus d'explications, je vous suggère juste d'aller voir les exemples.
+Contents (pages, posts) declare in a header the template to use. A template can call a parent template. This allows to have a template to include [markdown][] and a template for the page. To go further, see examples.
 
 ### `_pub`
 
-Ce répertoire est probablement le plus simple. Tout ce qui est contenu dedans sera copié à la racine du site. Il permet donc d'inclure des fichiers css, des javascript, des images, des resources diverses, des fichiers html générés par d'autres moyens, etc.
+This is the easier folder. All in this will be copied at the root of the website. This allows you to include css, javascript, pictures, resources, html, etc.
 
 ### `config.yaml`
 
-Le fichier `config.yaml` contient les paramètres nécessaire à la génération du site. Il s'agit de paramètres "systèmes" (par exemple l'url, le chemin de déploiement) ou simplement des paramètres destinés à être factorisés (comptes, infos twitter, etc).
+The file `config.yaml` contains all necessary parameters to generate the site. Some are _system_ parameters (like the root url), some are simply informations to factorize like accounts, twitter informations, etc.
 
-Voici un exemple de fichier, commenté :
+This is an example of config file :
 
 ```yaml
-# URL du site généré (les liens sont tous absolus)
+# URL of generated web site (to have absolute links)
 site_url: http://log.winsos.net
-# URL de déploiement, via rsync
+# Deployement url (via rsync)
 deploy_to: ...@www.....lan:/var/www/log/
-# Titre des pages
+# Page title
 title: CrEv's log
 
-# Informations twitter cards, opengraph, etc
-# Nom de l'auteur
+# Twitter cards, opengraph, etc
+# Author
 name: Plop Plop
 # Twitter site / creator -> twitter cards
 twitter_site: _crev_
 twitter_creator: _crev_
-# Description par défaut si non fournie
+# Default description if no excerpt
 default_description: My personal weblog
 
-# Divers comptes, permettant d'être affichés dans une page about dans les templates par défaut
+# Some accounts, to be displayes in an about page in default templates
 accounts:
     twitter: https://twitter.com/_crev_
     gplus: https://plus.google.com/112813954986166280487
@@ -98,52 +94,64 @@ accounts:
     coderwall: https://coderwall.com/crev
     linkedin: http://fr.linkedin.com/in/yvesbrissaud
 
-# Assets, description des css/js à générer (nom des fichiers sans extension)
+# Assets, description of css/js to generate (name of files without extension)
 assets:
     css: [application, cv]
     js: [application]
 
 ```
-
-A part le premier (`site_url`) qui est réellement conseillé, le reste est toujours optionel et dépend de vos templates. Ceci n'est donc qu'un exemple et vous pouvez en rajouter autant que vous voulez. Ils seront donc accessible de partour via les objets ruby.
+Except for the first which is really recommended, others are optional and depend of your templates. This is only an example, you can add all parameters you want. They will always be accessible in ruby objets.
 
 ### Headers
 
-Chaque fichier [markdown][] et [haml][] peut débuter par un entête ajouter quelques méta données. Selon les cas (pages, billet, template) les paramètres ne sont pas forcément tous obligatoire. Voici les paramètres dans le cas d'un billet de blog.
+Every [markdown][] and [haml][] files can start with an header to add some meta data. All parameters are not mandatory and can vary depending on the case (pages, blog post, template). This is an example for a blog post.
 
-Tout d'abord l'entête doit **toujours** débuter à la première lighe du fichier, par `---` et termine par une ligne contenant uniquement `---`.
-Ce qui est entre ces lignes est du [yaml][].
+First, the header **must** starts, at the first line of the file, with `---` and ends by a line containing only `---`.
+All inside this lines is [yaml][].
 
-Voici donc les données les plus courantes :
+* `layout` : name of the [haml][] file which will contain the [markdown][] output
+* `tags` : Array containing tags
+* `title` : Title of the article
+* `author` : Name of the author
+* `email` : Email of the author. It is only used for gravatar and will not be displayed
+* `twitter` : twitter account of the author, optional
+* `published` : if `false`, allow to not generate output for this content
 
-* `layout` : nom du fichier [haml][] qui va recueillir la sortie de [markdown][]
-* `tags` : tableau contenant les tags relatif au billet
-* `title` : Titre clair, avec accents et autres
-* `author` : Nom de l'auteur
-* `email` : email de l'auteur. L'email n'est pas affiché, il est utilisé pour afficher le gravatar correspondant
-* `twitter` : compte twitter de l'auteur. Optionel, il peut être défini dans la configuration
-* `published` : si `false` permet de ne pas généré la sortie. Cela permet de versionner certains contenus avant qu'ils soit publiés
-
-Par exemple :
+By example :
 
     ---
     layout: post
     tags: [web_log_today]
-    title: Web Log Today est juillet
+    title: Web Log Today first release
     author: Yves
     email: plopplop@....com
     twitter: _crev_
     published: false
     ---
 
-_Note :_ vous pouvez rajouter sans aucun problème des métadonnées propres. Elles seront accessibles via les objets ruby comme détaillé plus bas. Cela peut vous permettre d'améliorer vos templates, votre site, en posant le maximum de données dans les fichiers [markdown][] ce qui permet de rendre la saisie plus agréable.
+### Special files
 
-### Fichiers spéciaux
+Two special files can be present inside `_pages` folder, and on in `_layouts`.
 
-Deux fichiers un peu plus spéciaux peuvent être présent dans le répertoire `_pages` et un dans le répertoire `_layouts`.
+The first is `atom.xml.haml`. It allows to generate an `atom.xml` file containing all blog posts.
 
-Le premier est simplement le fichier `atom.xml.haml`. Comme son nom l'indique il permet de générer un fichier `atom.xml` et donc permet d'offrir à vos lecteurs un flux à placer dans un quelconque lecteur. Par défaut il permet de générer un flux basé sur les articles de blogs uniquement.
+Second is a `sitemap.xml.haml`. It allows to generate a `sitemap.xml` referencing all files.
 
-Le deuxième, un peu dans le même veine, est le fichier `sitemap.xml.haml`. Il permet de générer un fichier `sitemap.xml` listant l'ensemble des ressources html de votre site.
+Finally, the file `tags.haml` can be present in `_layouts` to generate files referencing all posts with a common tag. Contrary to all other files, this one can have multiples output, one file per tag in `tags` folder.
 
-Enfin le fichier `tags.haml` peut être présent dans le répertoire `_layouts` afin d'afficher tous les billets d'un tag commun. Contrairement à tous les autres cas, ce fichier aura de multiples sorties, un fichier par tag, présent dans le répertoire `tags`.
+[haml]: http://haml.info
+[git]: http://git-scm.com
+[markdown]: http://daringfireball.net/projects/markdown/
+[ruby]: http://ruby-lang.org
+[gem]: http://rubygems.org
+[guard]: https://github.com/guard/guard
+[rake]: http://rake.rubyforge.org/
+[sass]: http://sass-lang.com/
+[coffeescript]: http://coffeescript.org/
+[bundler]: http://gembundler.com/
+[redcarpet]: https://github.com/vmg/redcarpet
+[gollum]: https://github.com/github/gollum
+[jekyll]: jekyllrb.com
+[sprockets]: https://github.com/sstephenson/sprockets
+[yaml]: http://www.yaml.org/
+[rake]: http://rake.rubyforge.org/
