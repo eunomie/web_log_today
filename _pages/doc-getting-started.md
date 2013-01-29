@@ -7,8 +7,8 @@ This is a little tutorial to learn `wlt`.
 1. Create a directory to contains your blog sources, in our case `my_new_blog`
 
     ```sh
-    mkdir mon_new_blog
-    cd mon_new_blog
+    mkdir my_new_blog
+    cd my_new_blog
     ```
 
 2. We scaffold with the basic version
