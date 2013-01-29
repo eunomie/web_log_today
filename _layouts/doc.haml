@@ -1,0 +1,16 @@
+!!! 5
+%html(lang="en")
+  %head
+    = render :partial => "header"
+
+  %body(class="blue doc")
+    = render :partial => "body_header"
+
+    %section.main
+      %article
+        = content
+
+      %aside
+        = render :partial => "doc_toc"
+
+    = render :partial => "body_footer"

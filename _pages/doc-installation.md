@@ -1,10 +1,12 @@
 ---
-layout: index
+layout: doc
 ---
 
 # Installation
 
-Installation is really easy (tested with linux and mac). You just need git, ruby 1.9.3 and gem.
+The main part of _Web log today_ is based on [sub](https://github.com/37signals/sub) so the installation is really easy.
+
+You just need git, ruby 1.9.3 and gem.
 
 1. Get the sources in `~/.wlt` by example
     

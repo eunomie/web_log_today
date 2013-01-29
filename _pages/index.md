@@ -23,7 +23,7 @@ The main command, `wlt`, is created using [sub][] from [37 signals][].
 
 The current website is created using « Web Log Today » and you can find the source code [here](https://github.com/CrEv/web_log_today).
 
-To go deeper, see [installation](installation.html) or [usage](usage.html).
+To go deeper, see the [documentation](doc.html).
 
 [haml]: http://haml.info/
 [markdown]: http://daringfireball.net/projects/markdown/
