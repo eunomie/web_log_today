@@ -2,6 +2,8 @@
 layout: doc
 ---
 
+# Getting started
+
 This is a little tutorial to learn `wlt`.
 
 1. Create a directory to contains your blog sources, in our case `my_new_blog`
