@@ -3,7 +3,7 @@ layout: post
 tags: [release]
 title: Web Log Today, first release
 author: CrEv
-published: false
+published: true
 ---
 
 Today is the first release of [Web Log Today][wlt]!
